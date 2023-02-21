@@ -1,4 +1,4 @@
-public class Player {
+abstract public class Player {
     private String name;
     private char symbol;
 
@@ -7,9 +7,7 @@ public class Player {
         this.symbol = symbol;
     }
 
-    public void getMove(int x, int y) {
-
-    }
+    abstract public void getMove(int x, int y) ;
 
     public String getName() {
         return this.name;
