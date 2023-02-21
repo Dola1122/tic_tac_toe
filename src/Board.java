@@ -1,6 +1,6 @@
-public class Board {
-    private int n;
-    private char[][] grid;
+abstract public class Board {
+    protected int n;
+    protected char[][] grid;
 
     public Board(int n) {
         this.n = n;
@@ -16,20 +16,18 @@ public class Board {
         this.grid[x][y] = symbol;
     }
 
+    abstract public boolean isEmptyCell(int x, int y);
+
     public void displayBoard() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(grid[i][j]);
+                System.out.print(" "+grid[i][j]+" ");
             }
             System.out.println();
         }
     }
 
-    public boolean isWinner(char symbol) {
-        return true;
-    }
+    abstract public boolean isWinner(char symbol) ;
 
-    public boolean isDraw() {
-        return true;
-    }
+    abstract public boolean isDraw() ;
 }
