@@ -16,33 +16,29 @@ public class XOGame extends GameManager {
             gameBoard.displayBoard();
             System.out.println();
             System.out.println("Player " + players[turn].getName() + " turn");
-            System.out.println("Enter the row & column number space separated :");
-            int x, y;
+            System.out.println("Enter position number from 1 : 9");
+            int postion;
 
             String input = scanner.nextLine();
-            String[] inputs = input.split(" ");
-            x = Integer.parseInt(inputs[0]);
-            y = Integer.parseInt(inputs[1]);
+            postion = Integer.parseInt(input);
 
             // if user input was invalid
-            while (!gameBoard.update(x, y, players[turn].getSymbol())) {
+            while (postion < 1 || postion > 9 || !gameBoard.update(postion, players[turn].getSymbol())) {
                 System.out.println("Invalid input please try again");
-                System.out.println("Enter the row & column number space separated :");
+                System.out.println("Enter position number from 1 : 9");
 
 
                 input = scanner.nextLine();
-                inputs = input.split(" ");
-                x = Integer.parseInt(inputs[0]);
-                y = Integer.parseInt(inputs[1]);
+                postion = Integer.parseInt(input);
             }
 
             if (gameBoard.isWinner(players[turn].getSymbol())) {
-                System.out.println("Player " + players[turn].getName() + " win");
                 gameBoard.displayBoard();
+                System.out.println("Player " + players[turn].getName() + " win");
                 break;
             } else if (gameBoard.isDraw()) {
-                System.out.println("Draw!");
                 gameBoard.displayBoard();
+                System.out.println("Draw!");
                 break;
             }
 

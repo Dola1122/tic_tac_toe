@@ -12,9 +12,24 @@ abstract public class Board {
         }
     }
 
-    public boolean update(int x, int y, char symbol) {
-        if (grid[x][y] == '-') {
-            this.grid[x][y] = symbol;
+    public boolean update(int userPosition, char symbol) {
+        int pos = 1;
+        int i = 0, j = 0;
+        boolean x = true;
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < n; j++) {
+                if (userPosition == pos) {
+                    x = false;
+                    break;
+                }
+                pos++;
+            }
+            if (!x) {
+                break;
+            }
+        }
+        if (grid[i][j] == '-') {
+            this.grid[i][j] = symbol;
             return true;
         }
         return false;
